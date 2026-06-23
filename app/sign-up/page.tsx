@@ -9,47 +9,47 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-// import { signUp } from "@/lib/auth/auth-client";
+import { signUp } from "@/lib/auth/auth-client";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useState } from "react";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // const [error, setError] = useState("");
-  // const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  // const router = useRouter();
+  const router = useRouter();
 
-  // async function handleSubmit(e: React.FormEvent) {
-  //   e.preventDefault();
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
 
-  //   setError("");
-  //   setLoading(true);
+    setError("");
+    setLoading(true);
 
-  //   try {
-  //     const result = await signUp.email({
-  //       name,
-  //       email,
-  //       password,
-  //     });
+    try {
+      const result = await signUp.email({
+        name,
+        email,
+        password,
+      });
 
-  //     if (result.error) {
-  //       setError(result.error.message ?? "Failed to sign up");
-  //     } else {
-  //       router.push("/dashboard");
-  //     }
-  //   } catch (err) {
-  //     setError("An unexpected error occurred");
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
+      if (result.error) {
+        setError(result.error.message ?? "Failed to sign up");
+      } else {
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      setError("An unexpected error occurred");
+    } finally {
+      setLoading(false);
+    }
+  }
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)] items-center justify-center bg-white p-4">
