@@ -1,5 +1,5 @@
 import connectDB from "./db";
-import { Board, Column } from "./models"
+import { Board, Column } from "./models";
 
 const DEFAULT_COLUMNS = [
   {
